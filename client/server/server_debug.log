@@ -1,0 +1,12 @@
+[dotenv@17.2.3] injecting env (5) from ../.env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+categoryRoutes.js loaded.
+(node:5382) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5382) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+Server running on port 5001
+MongoDB Atlas connected
+Connected to database: mongodb+srv://quiz-app-user:czPkcXFcLz9PL0SK@cluster0.lxvd7xc.mongodb.net/quiz-app?retryWrites=true&w=majority
+Database name: quiz-app
+Available collections: [ 'users', 'categories', 'userscores', 'quizzes' ]
+Default categories ensured.
