@@ -29,7 +29,7 @@ function QuizDetail() {
           try {
             // This is a category-based quiz, fetch questions from OpenTDB
             const category = quizId.replace('category-', '').replace(/-/g, ' ');
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/external-quizzes?category=${encodeURIComponent(category)}&amount=10`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/external-quizzes?category=${encodeURIComponent(category)}&amount=10`);
             
             const quizFromApi = {
               ...quizData,
@@ -102,7 +102,7 @@ function QuizDetail() {
       }
     });
 
-    axios.post(`${process.env.REACT_APP_API_URL}/api/scores`, {
+    axios.post(`${import.meta.env.VITE_API_URL}/api/scores`, {
       quizId: quiz._id,
       quizTitle: quiz.title,
       category: quiz.category,

@@ -93,7 +93,7 @@ const HowItWorksSection = () => (
       />
       <StepCard 
         stepNumber="2"
-        title="AI Generation"
+        title="API Generation"
         description="API instantly creates a unique, 5,10,15,20-question multiple-choice quiz tailored to your topic and few self added questions."
       />
       <StepCard 
@@ -267,13 +267,13 @@ function HomePage() {
     setLoading(true);
     setError(null);
     console.log('Environment Variables:', {
-      REACT_APP_API_URL: process.env.REACT_APP_API_URL,
-      NODE_ENV: process.env.NODE_ENV
+      VITE_API_URL: import.meta.env.VITE_API_URL,
+      NODE_ENV: import.meta.env.NODE_ENV
     });
     try {
       // First, try to get quizzes from MongoDB (admin-created quizzes)
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
         const { data: mongoQuizzes } = await axios.get(
           `${apiUrl}/api/quizzes?category=${encodeURIComponent(selectedCategory)}&difficulty=${encodeURIComponent(difficulty)}`,
           { withCredentials: true }
@@ -309,7 +309,7 @@ function HomePage() {
       }
       
       // Fallback to external API if no MongoDB quizzes found
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
       const { data } = await axios.get(
         `${apiUrl}/api/external-quizzes?category=${encodeURIComponent(selectedCategory)}&difficulty=${encodeURIComponent(difficulty)}&amount=${numQuestions}`,
         { withCredentials: true }

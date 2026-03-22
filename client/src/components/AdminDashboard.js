@@ -66,7 +66,7 @@ function AdminDashboard() {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/quizzes`, config);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/quizzes`, config);
       setQuizzes(data);
       setError(null);
     } catch (err) {
@@ -90,7 +90,7 @@ function AdminDashboard() {
       }
 
       // Use the public endpoint for global leaderboard (no auth required)
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/leaderboard/public/global?limit=10`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaderboard/public/global?limit=10`);
 
       // Process the response data to ensure it has the expected structure
       let leaderboardData = [];
@@ -152,7 +152,7 @@ function AdminDashboard() {
         }
       };
 
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/scores/recent`, config);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/scores/recent`, config);
       
       // Sort by date completed (newest first)
       const sortedTests = response.data.sort((a, b) => 
@@ -272,7 +272,7 @@ function AdminDashboard() {
         },
       };
 
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/quizzes/${id}`, config);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/quizzes/${id}`, config);
       fetchQuizzes();
       onDeleteClose();
     } catch (err) {
@@ -315,7 +315,7 @@ function AdminDashboard() {
         })),
       };
 
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/quizzes/${currentQuiz._id}`, updatedQuizData, config);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/quizzes/${currentQuiz._id}`, updatedQuizData, config);
       onEditClose();
       fetchQuizzes();
       resetForm();
@@ -358,7 +358,7 @@ function AdminDashboard() {
         })),
       };
 
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/quizzes`, newQuizData, config);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/quizzes`, newQuizData, config);
       onClose();
       fetchQuizzes();
       resetForm();
@@ -451,7 +451,7 @@ function AdminDashboard() {
         <Box mt={8}>
           <Flex justify="space-between" align="center" mb={4}>
             <Box>
-              <Heading as="h3" size="lg" color="gray.800">Global Leaderboard</Heading>
+              <Heading as="h3" size="lg">Global Leaderboard</Heading>
               <Text color="gray.600" mt={1}>
                 Track overall user performance and celebrate top performers
               </Text>
@@ -620,7 +620,7 @@ function AdminDashboard() {
         <Box mt={8}>
           <Flex justify="space-between" align="center" mb={4}>
             <Box>
-              <Heading as="h3" size="lg" color="gray.800">Recent Test Activity</Heading>
+              <Heading as="h3" size="lg">Recent Test Activity</Heading>
               <Text color="gray.600" mt={1}>
                 See when users completed their quizzes
               </Text>
@@ -656,7 +656,7 @@ function AdminDashboard() {
               bg="white"
               boxShadow="sm"
             >
-              <Table variant="simple" size="md">
+               <Table variant="simple" size="md"> 
                 <Thead bg="gray.50">
                   <Tr>
                     <Th color="gray.600">User</Th>
@@ -665,8 +665,8 @@ function AdminDashboard() {
                     <Th color="gray.600">Date & Time</Th>
                     <Th color="gray.600">Time Ago</Th>
                   </Tr>
-                </Thead>
-                <Tbody>
+                </Thead> 
+                  <Tbody>
                   {recentTests.map((test, index) => (
                     <Tr 
                       key={test._id}

@@ -214,8 +214,8 @@ function LoginScreen() {
 
     try {
       console.log('Environment:', {
-        NODE_ENV: process.env.NODE_ENV,
-        REACT_APP_API_URL: process.env.REACT_APP_API_URL
+        NODE_ENV: import.meta.env.NODE_ENV,
+        VITE_API_URL: import.meta.env.VITE_API_URL
       });
 
       const config = {
@@ -225,7 +225,7 @@ function LoginScreen() {
       };
 
       // ------ FINAL FIXED URL ------
-      const loginUrl = `${process.env.REACT_APP_API_URL}/api/users/login`;
+      const loginUrl = `${import.meta.env.VITE_API_URL}/api/users/login`;
 
       console.log('Login URL:', loginUrl);
 
