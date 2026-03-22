@@ -7,12 +7,24 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // ---------- CORS ----------
+// app.use(cors({
+//   origin: "http://localhost:3000",  // Only allow localhost for development
+//   methods: ["GET","POST","PUT","DELETE"],
+//   allowedHeaders: ["Content-Type","Authorization"],
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: "http://localhost:3000",  // Only allow localhost for development
+  origin: [
+    "http://localhost:3000",
+    "https://quiz-app-eight-inky-46.vercel.app"
+  ],
   methods: ["GET","POST","PUT","DELETE"],
   allowedHeaders: ["Content-Type","Authorization"],
   credentials: true
 }));
+
+
 
 // ---------- Middleware ----------
 app.use(express.json());
