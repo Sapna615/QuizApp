@@ -66,7 +66,7 @@ function AdminDashboard() {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/quizzes`, config);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/quizzes`, config);
       setQuizzes(data);
       setError(null);
     } catch (err) {
@@ -90,7 +90,7 @@ function AdminDashboard() {
       }
 
       // Use the public endpoint for global leaderboard (no auth required)
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaderboard/public/global?limit=10`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/leaderboard/public/global?limit=10`);
 
       // Process the response data to ensure it has the expected structure
       let leaderboardData = [];
@@ -152,7 +152,7 @@ function AdminDashboard() {
         }
       };
 
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/scores/recent`, config);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/scores/recent`, config);
       
       // Sort by date completed (newest first)
       const sortedTests = response.data.sort((a, b) => 
@@ -272,7 +272,7 @@ function AdminDashboard() {
         },
       };
 
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/quizzes/${id}`, config);
+      await axios.delete(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/quizzes/${id}`, config);
       fetchQuizzes();
       onDeleteClose();
     } catch (err) {
@@ -315,7 +315,7 @@ function AdminDashboard() {
         })),
       };
 
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/quizzes/${currentQuiz._id}`, updatedQuizData, config);
+      await axios.put(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/quizzes/${currentQuiz._id}`, updatedQuizData, config);
       onEditClose();
       fetchQuizzes();
       resetForm();
@@ -358,7 +358,7 @@ function AdminDashboard() {
         })),
       };
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/quizzes`, newQuizData, config);
+      await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/quizzes`, newQuizData, config);
       onClose();
       fetchQuizzes();
       resetForm();

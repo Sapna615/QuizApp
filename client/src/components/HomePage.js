@@ -267,13 +267,13 @@ function HomePage() {
     setLoading(true);
     setError(null);
     console.log('Environment Variables:', {
-      VITE_API_URL: import.meta.env.VITE_API_URL,
-      NODE_ENV: import.meta.env.NODE_ENV
+      REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+      NODE_ENV: process.env.NODE_ENV
     });
     try {
       // First, try to get quizzes from MongoDB (admin-created quizzes)
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
         const { data: mongoQuizzes } = await axios.get(
           `${apiUrl}/api/quizzes?category=${encodeURIComponent(selectedCategory)}&difficulty=${encodeURIComponent(difficulty)}`,
           { withCredentials: true }

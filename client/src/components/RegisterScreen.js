@@ -31,7 +31,7 @@ function RegisterScreen() {
         },
       };
 
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/register`,{ name, username, email, password },config);
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/users/register`,{ name, username, email, password },config);
 
       toast({
         title: 'Registration Successful',

@@ -9,7 +9,7 @@ function QuizList() {
 
   useEffect(() => {
     // Fetch available quiz categories from our API
-    axios.get(`${import.meta.env.VITE_API_URL}/api/categories`)
+    axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/categories`)
       .then(response => {
         const categories = response.data;
         // Create a quiz for each category
