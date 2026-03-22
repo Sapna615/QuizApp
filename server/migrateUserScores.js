@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const UserScore = require('./models/UserScore');
 const { Types: { ObjectId } } = mongoose;
-
 dotenv.config();
-
 const migrateUserScores = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
@@ -12,7 +10,6 @@ const migrateUserScores = async () => {
       socketTimeoutMS: 45000,
       family: 4,
     });
-
     console.log('Connected to MongoDB');
 
     // Find all user scores with string user IDs
@@ -22,9 +19,7 @@ const migrateUserScores = async () => {
         { userId: { $exists: false } }
       ]
     });
-
     console.log(`Found ${scores.length} user scores to migrate`);
-
     let updatedCount = 0;
     const batchSize = 50;
     const batches = [];

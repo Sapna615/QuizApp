@@ -9,7 +9,7 @@ const nodeQuiz = {
   description: 'Test your knowledge of Node.js runtime',
   category: 'Node.js',
   difficulty: 'Easy',
-  timeLimit: 20, // 20 minutes
+  timeLimit: 20,
   questions: [
     {
       questionText: 'What is Node.js?',

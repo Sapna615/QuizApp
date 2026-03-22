@@ -9,7 +9,7 @@ const networkingQuiz = {
   description: 'Test your knowledge of computer networking concepts',
   category: 'Networking',
   difficulty: 'Easy',
-  timeLimit: 20, // 20 minutes for easy
+  timeLimit: 20, 
   questions: [
     {
       questionText: 'Which layer of OSI model handles routing?',

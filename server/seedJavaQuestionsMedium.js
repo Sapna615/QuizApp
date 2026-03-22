@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 const Quiz = require('./models/Quiz');
 require('dotenv').config();
-
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/quiz-app';
-
 const javaQuiz = {
   title: 'Java Programming Quiz',
   description: 'Test your knowledge of Java programming language',
   category: 'Java Programming',
   difficulty: 'Medium',
-  timeLimit: 20, // 20 minutes
+  timeLimit: 20, 
   questions: [
-    // MEDIUM MODE QUESTIONS
 {
   questionText: 'Which OOP concept allows methods to have the same name but different parameters?',
   options: ['Inheritance', 'Polymorphism', 'Encapsulation', 'Abstraction'],
@@ -142,12 +139,8 @@ async function seedDatabase() {
       useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
-
-    // Remove any existing Java quizzes
     await Quiz.deleteMany({ category: 'Java Programming', difficulty: 'Medium' });
     console.log('Removed existing Medium Java quizzes');
-
-    // Add the new Java quiz
     const savedQuiz = await Quiz.create(javaQuiz);
     console.log('Added new Medium Java quiz with ID:', savedQuiz._id);
 

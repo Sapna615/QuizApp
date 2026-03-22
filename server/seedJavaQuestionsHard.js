@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Quiz = require('./models/Quiz');
 require('dotenv').config();
-
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/quiz-app';
-
 const javaQuiz = {
   title: 'Java Programming Quiz',
   description: 'Test your knowledge of Java programming language',
@@ -11,8 +9,6 @@ const javaQuiz = {
   difficulty: 'Hard',
   timeLimit: 20, // 20 minutes for hard
   questions: [
-    /// HARD MODE QUESTIONS
-
 {
   questionText: 'Which garbage collection algorithm compacts memory to reduce fragmentation?',
   options: ['Mark-Sweep', 'Copying GC', 'Mark-Compact', 'Reference Counting'],
@@ -143,15 +139,12 @@ async function seedDatabase() {
       useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
-
     // Remove any existing Java quizzes
     await Quiz.deleteMany({ category: 'Java Programming', difficulty: 'Hard' });
     console.log('Removed existing Hard Java quizzes');
-
     // Add the new Java quiz
     const savedQuiz = await Quiz.create(javaQuiz);
     console.log('Added new Hard Java quiz with ID:', savedQuiz._id);
-
     console.log('Database seeded successfully!');
     process.exit(0);
   } catch (error) {
@@ -159,5 +152,4 @@ async function seedDatabase() {
     process.exit(1);
   }
 }
-
 seedDatabase();

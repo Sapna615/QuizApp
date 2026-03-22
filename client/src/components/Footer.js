@@ -23,7 +23,7 @@ function Footer() {
         </Text>
         <Flex>
           <ChakraLink 
-            href="https://github.com/Sapna615" 
+            href="https://github.com/Sapna615/QuizApp" 
             isExternal 
             mx={2} 
             color={textColor} 
@@ -40,7 +40,7 @@ function Footer() {
             <FaGithub size="20px" />
           </ChakraLink>
           <ChakraLink 
-            href="https://www.linkedin.com/in/sapna-rai/" 
+            href="https://www.linkedin.com/feed/update/urn:li:activity:7406393952851021824/" 
             isExternal 
             mx={2} 
             color={textColor} 

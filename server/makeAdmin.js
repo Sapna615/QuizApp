@@ -1,7 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('./models/User');
-
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -12,7 +11,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error('MongoDB connection error:', err);
   process.exit(1);
 });
-
 // Function to make a user admin
 const makeAdmin = async (email) => {
   try {
@@ -21,7 +19,6 @@ const makeAdmin = async (email) => {
       { $set: { role: 'admin' } },
       { new: true }
     );
-
     if (!user) {
       console.error('User not found with email:', email);
       return;

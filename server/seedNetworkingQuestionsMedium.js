@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
 const Quiz = require('./models/Quiz');
 require('dotenv').config();
-
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/quiz-app';
-
 const networkingQuiz = {
   title: 'Networking Quiz',
   description: 'Test your knowledge of computer networking concepts',
   category: 'Networking',
   difficulty: 'Medium',
-  timeLimit: 20, // 20 minutes for medium
+  timeLimit: 20,
   questions: [
     {
       questionText: 'Which protocol ensures reliable data delivery?',
