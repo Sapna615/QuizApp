@@ -17,7 +17,8 @@ const PORT = process.env.PORT || 5001;
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://quiz-app-nine-alpha-46.vercel.app"
+    "https://quiz-app-nine-alpha-46.vercel.app",
+    "https://quizapp-a9tc.onrender.com"
   ],
   methods: ["GET","POST","PUT","DELETE"],
   allowedHeaders: ["Content-Type","Authorization"],
