@@ -6,6 +6,10 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 // ---------- CORS ----------
 // app.use(cors({
 //   origin: "http://localhost:3000",  // Only allow localhost for development
