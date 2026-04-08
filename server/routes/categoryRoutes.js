@@ -31,8 +31,25 @@ router.post('/', protect, admin, async (req, res) => {
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    // Get categories from actual quizzes instead of the Category collection
+    // Get categories from actual quizzes first
     const quizCategories = await Quiz.distinct('category');
+    
+    // If no quizzes exist, return default categories
+    if (quizCategories.length === 0) {
+      const defaultCategories = [
+        { _id: 'category-1', name: 'Java' },
+        { _id: 'category-2', name: 'Python' },
+        { _id: 'category-3', name: 'React' },
+        { _id: 'category-4', name: 'Node.js' },
+        { _id: 'category-5', name: 'Networking' },
+        { _id: 'category-6', name: 'Operating Systems' },
+        { _id: 'category-7', name: 'JavaScript' },
+        { _id: 'category-8', name: 'HTML/CSS' },
+        { _id: 'category-9', name: 'Database' },
+        { _id: 'category-10', name: 'General Knowledge' }
+      ];
+      return res.json(defaultCategories);
+    }
     
     // Format the response to match expected structure
     const categories = quizCategories.map((categoryName, index) => ({
