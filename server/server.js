@@ -21,6 +21,18 @@ app.use(cors({
   credentials: true
 }));
 
+// Add explicit CORS headers as fallback
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 console.log('CORS configured for origins:', [
   "http://localhost:3000",
   "https://quiz-app-nine-alpha-46.vercel.app", 
@@ -73,7 +85,19 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 // ---------- Basic Route ----------
-app.get('/', (req, res) => res.send('Quiz API is running'));
+app.get('/', (req, res) => {
+  res.send('Quiz API is running - CORS should be working!');
+});
+
+// ---------- CORS Test Route ----------
+app.get('/test-cors', (req, res) => {
+  res.json({ 
+    message: 'CORS test successful!',
+    timestamp: new Date().toISOString(),
+    origin: req.get('origin'),
+    headers: req.headers
+  });
+});
 
 // ---------- Start Server ----------
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
