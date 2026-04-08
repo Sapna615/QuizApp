@@ -309,7 +309,7 @@ function HomePage() {
       }
       
       // Fallback to external API if no MongoDB quizzes found
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
       const { data } = await axios.get(
         `${apiUrl}/api/external-quizzes?category=${encodeURIComponent(selectedCategory)}&difficulty=${encodeURIComponent(difficulty)}&amount=${numQuestions}`,
         { withCredentials: true }
