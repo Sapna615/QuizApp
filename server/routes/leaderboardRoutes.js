@@ -218,8 +218,19 @@ const getGlobalLeaderboard = async (req, res, isAdmin = false) => {
 router.get('/public/global', async (req, res) => {
   try {
     const result = await getGlobalLeaderboard(req, res, false);
+    
+    // If no results, return empty array with proper structure
+    if (!result.results || result.results.length === 0) {
+      return res.json({ 
+        type: 'global', 
+        results: [],
+        message: 'No scores available yet. Be the first to play!' 
+      });
+    }
+    
     res.json(result);
   } catch (err) {
+    console.error('Error in public/global leaderboard:', err);
     res.status(500).json({ message: err.message });
   }
 });
