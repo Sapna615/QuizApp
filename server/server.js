@@ -25,6 +25,12 @@ app.use(cors({
   credentials: true
 }));
 
+console.log('CORS configured for origins:', [
+  "http://localhost:3000",
+  "https://quiz-app-nine-alpha-46.vercel.app", 
+  "https://quizapp-a9tc.onrender.com"
+]);
+
 
 
 // ---------- Middleware ----------
